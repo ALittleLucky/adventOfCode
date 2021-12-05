@@ -45,12 +45,10 @@ func countUnmarked(c card) int {
 
 		}
 	}
-	fmt.Println(count)
 	return count
 }
 
 func findWinner(Nums []int, cards []card) (c card, n int) {
-	fmt.Println("findWinner")
 	for _, n := range Nums {
 		for k, c := range cards {
 			for i := range c.set {
