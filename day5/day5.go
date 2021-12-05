@@ -1,6 +1,12 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"image"
+	"image/color"
+	"image/png"
+	"os"
+)
 
 func main() {
 	lines := LoadPoints("data.txt")
@@ -31,7 +37,24 @@ func p1(lines []line) {
 		}
 	}
 	fmt.Println(count)
+	coulors := []color.RGBA{{0, 0, 0, 0xff},
+		{50, 0, 0, 0xff},
+		{100, 0, 0, 0xff},
+		{150, 0, 0, 0xff},
+		{200, 0, 0, 0xff},
+		{250, 0, 0, 0xff}}
 
+	start := image.Point{0, 0}
+	end := image.Point{sizeX, sizeY}
+	img := image.NewRGBA(image.Rectangle{start, end})
+
+	for i := range field {
+		for j, v := range field[i] {
+			img.Set(i, j, coulors[v])
+		}
+	}
+	f, _ := os.Create("image.png")
+	png.Encode(f, img)
 }
 
 func getPoints(l line) []point {
