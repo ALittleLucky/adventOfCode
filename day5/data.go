@@ -31,27 +31,9 @@ func LoadPoints(inputFile string) (lines []line) {
 		var l line
 		l.start = pointFromString(lineString[0])
 		l.end = pointFromString(lineString[2])
-		//don't add diag lines
 
 		lines = append(lines, l)
 
-		// var c [5][5]bingoNumber
-		// for i, s := range lineString {
-		// 	pos := 0
-		// 	for _, v := range s {
-
-		// 		n, err := strconv.Atoi(v)
-		// 		if err != nil {
-		// 			continue
-		// 		}
-		// 		c[i][pos] = bingoNumber{n, false}
-		// 		pos++
-		// 	}
-		// }
-		// var crd card
-		// crd.set = c
-		// crd.index = len(cards)
-		// cards = append(cards, crd)
 	}
 
 	return lines
