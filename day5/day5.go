@@ -37,12 +37,9 @@ func p1(lines []line) {
 		}
 	}
 	fmt.Println(count)
-	coulors := []color.RGBA{{0, 0, 0, 0xff},
-		{50, 0, 0, 0xff},
-		{100, 0, 0, 0xff},
-		{150, 0, 0, 0xff},
-		{200, 0, 0, 0xff},
-		{250, 0, 0, 0xff}}
+	coulors := []color.RGBA{{255, 255, 255, 0xff},
+		{255, 0, 0, 0xff},
+		{0, 0, 0, 0xff}}
 
 	start := image.Point{0, 0}
 	end := image.Point{sizeX, sizeY}
@@ -50,7 +47,13 @@ func p1(lines []line) {
 
 	for i := range field {
 		for j, v := range field[i] {
-			img.Set(i, j, coulors[v])
+			if v == 0 {
+				img.Set(i, j, coulors[0])
+			} else if v == 1 {
+				img.Set(i, j, coulors[1])
+			} else {
+				img.Set(i, j, coulors[2])
+			}
 		}
 	}
 	f, _ := os.Create("image.png")
