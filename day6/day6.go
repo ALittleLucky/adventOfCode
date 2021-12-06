@@ -14,8 +14,8 @@ func main() {
 func simulate(fish [9]int, l int) int {
 	var newfish [9]int
 	for s := 0; s < l; s++ {
-		fish[7] = fish[7] + fish[0]
-		newfish[8] = fish[0]
+		fish[7] = fish[7] + fish[0] //add new fish
+		newfish[8] = fish[0]        // handle last item outside loop
 		for i := len(fish) - 2; i >= 0; i-- {
 			newfish[i] = fish[i+1]
 		}
