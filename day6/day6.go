@@ -11,20 +11,15 @@ func main() {
 	fmt.Println("problem 2:", simulate(fish, simulationLength))
 }
 
-func simulate(fish [9]int, l int) int {
-	var newfish [9]int
+func simulate(fish []int, l int) int {
 	for s := 0; s < l; s++ {
-		fish[7] = fish[7] + fish[0] //add new fish
-		newfish[8] = fish[0]        // handle last item outside loop
-		for i := len(fish) - 2; i >= 0; i-- {
-			newfish[i] = fish[i+1]
-		}
-		fish = newfish
+		fish[7] = fish[7] + fish[0]      //add new fish
+		fish = append(fish[1:], fish[0]) //move array one down
 	}
-	count := 0
 
-	for i := range fish {
-		count = count + fish[i]
+	count := 0
+	for _, f := range fish {
+		count += f
 	}
 	return count
 }

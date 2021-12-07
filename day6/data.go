@@ -8,14 +8,15 @@ import (
 	"strings"
 )
 
-func LoadFish(inputFile string) (ar [9]int) {
+func LoadFish(inputFile string) []int {
 
 	file, err := os.Open(inputFile)
 	if err != nil {
 		log.Fatal(err)
 	}
 	defer file.Close()
-	var intArray [9]int
+
+	intArray := make([]int, 9)
 	scanner := bufio.NewScanner(file)
 	scanner.Scan()
 	rawArray := strings.Split(scanner.Text(), ",")
