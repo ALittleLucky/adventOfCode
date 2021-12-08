@@ -2,16 +2,13 @@ package main
 
 import (
 	"fmt"
-	"io/ioutil"
-	"strconv"
-	"strings"
 	"time"
 )
 
 func main() {
 	var p1, p2 int
 	t := time.Now()
-	fish := LoadFish("data.txt")
+	fish := LoadFish()
 	simulationLength := 80
 	p1, fish = simulate(fish, simulationLength)
 	simulationLength = 256 - simulationLength
@@ -33,16 +30,14 @@ func simulate(fish []int, l int) (a int, fishs []int) {
 	}
 	return count, fish
 }
-func LoadFish(inputFile string) []int {
+func LoadFish() []int {
 
-	f, _ := ioutil.ReadFile(inputFile)
-
+	rawArray := []int{2, 1, 2, 1, 5, 1, 5, 1, 2, 2, 1, 1, 5, 1, 4, 4, 4, 3, 1, 2, 2, 3, 4, 1, 1, 5, 1, 1, 4, 2, 5, 5, 5, 1, 1, 4, 5, 4, 1, 1, 4, 2, 1, 4, 1, 2, 2, 5, 1, 1, 5, 1, 1, 3, 4, 4, 1, 2, 3, 1, 5, 5, 4, 1, 4, 1, 2, 1, 5, 1, 1, 1, 3, 4, 1, 1, 5, 1, 5, 1, 1, 5, 1, 1, 4, 3, 2, 4, 1, 4, 1, 5, 3, 3, 1, 5, 1, 3, 1, 1, 4, 1, 4, 5, 2, 3, 1, 1, 1, 1, 3, 1, 2, 1, 5, 1, 1, 5, 1, 1, 1, 1, 4, 1, 4, 3, 1, 5, 1, 1, 5, 4, 4, 2, 1, 4, 5, 1, 1, 3, 3, 1, 1, 4, 2, 5, 5, 2, 4, 1, 4, 5, 4, 5, 3, 1, 4, 1, 5, 2, 4, 5, 3, 1, 3, 2, 4, 5, 4, 4, 1, 5, 1, 5, 1, 2, 2, 1, 4, 1, 1, 4, 2, 2, 2, 4, 1, 1, 5, 3, 1, 1, 5, 4, 4, 1, 5, 1, 3, 1, 3, 2, 2, 1, 1, 4, 1, 4, 1, 2, 2, 1, 1, 3, 5, 1, 2, 1, 3, 1, 4, 5, 1, 3, 4, 1, 1, 1, 1, 4, 3, 3, 4, 5, 1, 1, 1, 1, 1, 2, 4, 5, 3, 4, 2, 1, 1, 1, 3, 3, 1, 4, 1, 1, 4, 2, 1, 5, 1, 1, 2, 3, 4, 2, 5, 1, 1, 1, 5, 1, 1, 4, 1, 2, 4, 1, 1, 2, 4, 3, 4, 2, 3, 1, 1, 2, 1, 5, 4, 2, 3, 5, 1, 2, 3, 1, 2, 2, 1, 4}
 	intArray := make([]int, 9)
-	rawArray := strings.Split(string(f), ",")
 
 	for _, n := range rawArray {
-		i, _ := strconv.Atoi(n)
-		intArray[i]++
+
+		intArray[n]++
 	}
 
 	return intArray
