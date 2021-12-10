@@ -5,6 +5,7 @@ import (
 	"io/ioutil"
 	"sort"
 	"strings"
+	"time"
 )
 
 type pair struct {
@@ -22,7 +23,7 @@ type incorrectLine struct {
 }
 
 func main() {
-	//t := time.Now()
+	t := time.Now()
 	s, _ := ioutil.ReadFile("input.txt")
 	pairs := getPairs()
 	inL, icl := GetInvalidLines(string(s), pairs)
@@ -49,10 +50,8 @@ func main() {
 
 	sort.Ints(scores)
 
-	fmt.Println(scores[len(scores)/2])
-	// p1 := getRisk(lp)
-	// p2 := getBiggestBasins(ar, lp)
-	// fmt.Println("Part1:", p1, "Part2:", p2, "Time Taken:", time.Since(t))
+	p2 := scores[len(scores)/2]
+	fmt.Println("Part1:", p1, "Part2:", p2, "Time Taken:", time.Since(t))
 
 }
 
