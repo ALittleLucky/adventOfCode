@@ -3,10 +3,13 @@ package main
 import (
 	"fmt"
 	"math"
+	"time"
 )
 
 func main() {
 	//Part1
+
+	t := time.Now()
 	d1 := data()
 	var gammaRate []int = d1[0]
 
@@ -29,9 +32,11 @@ func main() {
 			EpsilonOutput = EpsilonOutput + int(math.Pow(2, float64(len(gammaRate)-i-1)))
 		}
 	}
-	fmt.Println(GammaOutput * EpsilonOutput)
+	p1 := GammaOutput * EpsilonOutput
 	//part2
-	fmt.Println(oxygen() * co2())
+	p2 := oxygen() * co2()
+
+	fmt.Println("Day 3 Part1:", p1, "Part2:", p2, "Time Taken:", time.Since(t))
 
 }
 
@@ -69,7 +74,6 @@ func oxygen() int {
 			Output = Output + int(math.Pow(2, float64(len(currentList[0])-i-1)))
 		}
 	}
-	fmt.Println(Output)
 	return Output
 }
 
@@ -99,7 +103,6 @@ func co2() int {
 			j = math.MaxInt32
 		}
 	}
-	fmt.Println(currentList[0])
 	Output := 0
 	for i := len(currentList[0]) - 1; i > -1; i-- {
 
@@ -107,6 +110,5 @@ func co2() int {
 			Output = Output + int(math.Pow(2, float64(len(currentList[0])-i-1)))
 		}
 	}
-	fmt.Println(Output)
 	return Output
 }

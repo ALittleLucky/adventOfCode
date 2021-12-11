@@ -31,7 +31,6 @@ func main() {
 	for _, l := range inL {
 		p1 += l.p.v
 	}
-	fmt.Println(p1)
 	scores := make([]int, 0)
 	for _, i := range icl {
 		lineValue := 0
@@ -51,7 +50,7 @@ func main() {
 	sort.Ints(scores)
 
 	p2 := scores[len(scores)/2]
-	fmt.Println("Part1:", p1, "Part2:", p2, "Time Taken:", time.Since(t))
+	fmt.Println("Day 10 Part1:", p1, "Part2:", p2, "Time Taken:", time.Since(t))
 
 }
 

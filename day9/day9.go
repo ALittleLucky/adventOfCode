@@ -20,7 +20,7 @@ func main() {
 	ar, lp := GetArrayAndLowPoints(string(s))
 	p1 := getRisk(lp)
 	p2 := getBiggestBasins(ar, lp)
-	fmt.Println("Part1:", p1, "Part2:", p2, "Time Taken:", time.Since(t))
+	fmt.Println("Day 9 Part1:", p1, "Part2:", p2, "Time Taken:", time.Since(t))
 
 }
 

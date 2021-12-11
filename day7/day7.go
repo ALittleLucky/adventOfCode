@@ -3,12 +3,16 @@ package main
 import (
 	"fmt"
 	"math"
+	"time"
 )
 
 func main() {
+	t := time.Now()
 	crabs := LoadCrabs("input.txt")
-	alignCrabs(crabs)
-	alignCrabsFuelBurn(crabs)
+	p1 := alignCrabs(crabs)
+	p2 := alignCrabsFuelBurn(crabs)
+
+	fmt.Println("Day 7 Part1:", p1, "Part2:", p2, "Time Taken:", time.Since(t))
 }
 
 func alignCrabs(crabs []int) int {
@@ -32,9 +36,7 @@ func alignCrabs(crabs []int) int {
 		if lowestTotal > total {
 			lowestTotal = total
 		}
-		fmt.Println(i, total)
 	}
-	fmt.Println(lowestTotal)
 	return 0
 }
 func alignCrabsFuelBurn(crabs []int) int {
@@ -63,8 +65,6 @@ func alignCrabsFuelBurn(crabs []int) int {
 		if lowestTotal > total {
 			lowestTotal = total
 		}
-		fmt.Println(i, total)
 	}
-	fmt.Println(lowestTotal)
 	return 0
 }

@@ -1,31 +1,34 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"time"
+)
 
 func main() {
-	p1()
-	p2()
+
+	t := time.Now()
+	fmt.Println("Day 4 Part1:", p1(), "Part2:", p2(), "Time Taken:", time.Since(t))
 
 }
-func p1() {
+func p1() int {
 	nums, cards := LoadGame("actual.txt")
 	winner, num := findWinner(nums, cards)
-	fmt.Println(countUnmarked(winner) * num)
+	return countUnmarked(winner) * num
 }
 
-func p2() {
+func p2() int {
 	nums, cards := LoadGame("actual.txt")
 
 	for len(cards) > 0 {
 		winner, num := findWinner(nums, cards)
 		if len(cards) == 1 {
-			fmt.Println(countUnmarked(winner) * num)
-			fmt.Println(countUnmarked(winner))
-			fmt.Println(num)
+			return countUnmarked(winner) * num
 		}
 		index := findCard(cards, winner.index)
 		cards = append(cards[:index], cards[index+1:]...)
 	}
+	return 0
 }
 func findCard(cards []card, w int) int {
 	for i, c := range cards {

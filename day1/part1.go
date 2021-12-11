@@ -1,8 +1,12 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"time"
+)
 
 func main() {
+	t := time.Now()
 	//Part1
 	d1 := depths()
 	lastDepth := 0
@@ -14,7 +18,7 @@ func main() {
 		}
 		lastDepth = d1[i]
 	}
-	fmt.Println(increases)
+	p1 := increases
 	//Part 2
 	d2 := depths()
 	SlidingDepth := 0
@@ -27,5 +31,6 @@ func main() {
 		SlidingDepth = d2[i] + d2[i+1] + d2[i+2]
 	}
 
-	fmt.Println(SlidingInc)
+	p2 := SlidingInc
+	fmt.Println("Day 1 Part1:", p1, "Part2:", p2, "Time Taken:", time.Since(t))
 }

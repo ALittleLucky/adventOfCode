@@ -17,7 +17,7 @@ func main() {
 	simulationLength := 100
 	p1, _ := getFlashes(GetArray(string(s)), simulationLength)
 	p2 := getSync(GetArray(string(s)))
-	fmt.Println("Part1:", p1, "Part2:", p2, "Time Taken:", time.Since(t))
+	fmt.Println("Day 11 Part1:", p1, "Part2:", p2, "Time Taken:", time.Since(t))
 
 }
 
@@ -51,7 +51,7 @@ func getFlashes(squids [][]int, simLength int) (int, [][]int) {
 			new = false
 			for i, l := range squids {
 				for j := range l {
-					if squids[i][j] > 9 && flashed[i][j] == 0 {
+					if squids[i][j] >= FlashPoint && flashed[i][j] == 0 {
 						new = true
 						squids = flashPoint(squids, i, j)
 						flashed[i][j] = 1
@@ -61,7 +61,7 @@ func getFlashes(squids [][]int, simLength int) (int, [][]int) {
 		}
 		for i, l := range squids {
 			for j := range l {
-				if squids[i][j] > 9 {
+				if squids[i][j] >= FlashPoint {
 					flashCount++
 					squids[i][j] = 0
 				}

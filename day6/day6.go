@@ -15,7 +15,7 @@ func main() {
 	p1 = simulate(fish, 80)
 	p2 = simulate(fish, 256)
 
-	fmt.Println("problem 1:", p1, "problem 2:", p2, time.Since(t))
+	fmt.Println("Day 6 Part1:", p1, "Part2:", p2, "Time Taken:", time.Since(t))
 
 }
 

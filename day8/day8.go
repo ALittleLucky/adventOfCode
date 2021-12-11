@@ -18,7 +18,7 @@ func main() {
 	t := time.Now()
 	p1 := Solve("input.txt")
 	p2 := SolveP2("input.txt")
-	fmt.Println(p1, p2, time.Since(t))
+	fmt.Println("Day 8 Part1:", p1, "Part2:", p2, "Time Taken:", time.Since(t))
 }
 func SolveP2(inputFile string) int {
 

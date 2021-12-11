@@ -2,19 +2,18 @@ package main
 
 import (
 	"fmt"
-	"image"
-	"image/color"
-	"image/png"
-	"os"
+	"time"
 )
 
 func main() {
+	t := time.Now()
 	lines := LoadPoints("data.txt")
 
-	p1(RemoveDiag(lines))
-	p1(lines)
+	p1 := solve(RemoveDiag(lines))
+	p2 := solve(lines)
+	fmt.Println("Day 5 Part1:", p1, "Part2:", p2, "Time Taken:", time.Since(t))
 }
-func p1(lines []line) {
+func solve(lines []line) int {
 
 	sizeX, sizeY := arraySize(lines)
 	field := make([][]int, sizeX)
@@ -36,28 +35,7 @@ func p1(lines []line) {
 			}
 		}
 	}
-	fmt.Println(count)
-	coulors := []color.RGBA{{255, 255, 255, 0xff},
-		{255, 0, 0, 0xff},
-		{0, 0, 0, 0xff}}
-
-	start := image.Point{0, 0}
-	end := image.Point{sizeX, sizeY}
-	img := image.NewRGBA(image.Rectangle{start, end})
-
-	for i := range field {
-		for j, v := range field[i] {
-			if v == 0 {
-				img.Set(i, j, coulors[0])
-			} else if v == 1 {
-				img.Set(i, j, coulors[1])
-			} else {
-				img.Set(i, j, coulors[2])
-			}
-		}
-	}
-	f, _ := os.Create("image.png")
-	png.Encode(f, img)
+	return count
 }
 
 func getPoints(l line) []point {

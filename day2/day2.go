@@ -1,8 +1,12 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"time"
+)
 
 func main() {
+	t := time.Now()
 	//Part1
 	m1 := moves()
 	x1, y1 := 0, 0
@@ -16,10 +20,9 @@ func main() {
 		case "up":
 			y1 = y1 - m1[i].value
 		}
-		fmt.Println("x:", x1, "y:", y1)
 	}
 
-	fmt.Println("output:", x1*y1)
+	p1 := x1 * y1
 
 	//Part2
 	m2 := moves()
@@ -35,8 +38,9 @@ func main() {
 		case "up":
 			aim = aim - m2[i].value
 		}
-		fmt.Println("x:", x2, "y:", y2)
 	}
 
-	fmt.Println("output:", x2*y2)
+	p2 := x2 * y2
+
+	fmt.Println("Day 2 Part1:", p1, "Part2:", p2, "Time Taken:", time.Since(t))
 }
