@@ -67,11 +67,7 @@ func getFlashes(squids [][]int, simLength int) (int, [][]int) {
 				}
 			}
 		}
-		for _, l := range squids {
-			fmt.Println(l)
-		}
 
-		fmt.Println(flashCount)
 	}
 	return flashCount, squids
 }
