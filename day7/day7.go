@@ -37,7 +37,7 @@ func alignCrabs(crabs []int) int {
 			lowestTotal = total
 		}
 	}
-	return 0
+	return lowestTotal
 }
 func alignCrabsFuelBurn(crabs []int) int {
 	furthest := 0
@@ -66,5 +66,5 @@ func alignCrabsFuelBurn(crabs []int) int {
 			lowestTotal = total
 		}
 	}
-	return 0
+	return lowestTotal
 }
